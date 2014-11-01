@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>De Rode Ridder</title>
+
+    <script src="/javascripts/jquery-2.1.1.min.js"></script>
+    <script src="/javascripts/knockout-3.2.0.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <script src="/javascripts/roderidder.js"></script>
+
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+  </head>
+  <body>
+  	<div class="container">
+      <h1>Rode Ridder</h1>
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active" id="collectieTab"><a href="#" data-bind="click:updateTitles">Collectie</a></li>
+        <li role="presentation" id="whishlistTab"><a href="#" data-bind="click:updateWhishlist">Wishlist</a></li>
+        <li role="presentation" id="dubbelTab"><a href="#" data-bind="click:updateDubbel">Dubbel</a></li>
+      </ul>
+      <table class="table">
+      	<thead>
+      		<th>Nr.</th><th>Titel</th><th>Versie</th>
+      	</thead>
+      	<tbody data-bind="foreach:titles">
+      		<tr>
+      			<td data-bind="text:nr"></td>
+      			<td data-bind="text:titel"></td>
+            <td><span data-bind="visible:zwInCollectie">Zwart/wit</span> <span data-bind="visible:kleurInCollectie">Kleur</span></td>
+      		</tr>
+      	</tbody>
+
+      </table>
+
+      <nav>
+        <ul class="pager">
+          <li data-bind="css:{disabled: pageNumber() < 2 }"><a href="#" data-bind="click:$root.decreasePage">Vorige</a></li>
+          <li data-bind="css:{disabled: pageNumber() === maxPageNr() }"><a href="#" data-bind="click:$root.increasePage">Volgende</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </body>
+</html>
